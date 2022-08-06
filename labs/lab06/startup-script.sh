@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /run/appinit
+cd /usr/appinit
 ./install_proxychains.sh
 ./install_mongod.sh
 ./install_ruby.sh

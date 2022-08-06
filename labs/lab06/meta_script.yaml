@@ -4,14 +4,14 @@ packages:
   - git
   - wget
 runcmd:
-  - mkdir /run/appinit
-  - [ wget, "https://raw.githubusercontent.com/neomorphizm/yc-play/main/labs/install_proxychains.sh", -P, /run/appinit ]
-  - [ wget, "https://raw.githubusercontent.com/neomorphizm/yc-play/main/labs/lab06/install_mongod.sh", -P, /run/appinit ]
-  - [ wget, "https://raw.githubusercontent.com/neomorphizm/yc-play/main/labs/lab06/install_ruby.sh", -P, /run/appinit ]
-  - [ wget, "https://raw.githubusercontent.com/neomorphizm/yc-play/main/labs/lab06/deploy.sh", -P, /run/appinit ]
-  - [ wget, "https://raw.githubusercontent.com/neomorphizm/yc-play/main/labs/lab06/startup-script.sh", -P, /run/appinit ]
-  - chmod +x /run/appinit/*.sh
-  - ./run/appinit/startup-script.sh
+  - mkdir /usr/appinit
+  - [ wget, "https://raw.githubusercontent.com/neomorphizm/yc-play/main/labs/install_proxychains.sh", -P, /usr/appinit ]
+  - [ wget, "https://raw.githubusercontent.com/neomorphizm/yc-play/main/labs/lab06/install_mongod.sh", -P, /usr/appinit ]
+  - [ wget, "https://raw.githubusercontent.com/neomorphizm/yc-play/main/labs/lab06/install_ruby.sh", -P, /usr/appinit ]
+  - [ wget, "https://raw.githubusercontent.com/neomorphizm/yc-play/main/labs/lab06/deploy.sh", -P, /usr/appinit ]
+  - [ wget, "https://raw.githubusercontent.com/neomorphizm/yc-play/main/labs/lab06/startup-script.sh", -P, /usr/appinit ]
+  - chmod +x /usr/appinit/*.sh
+  - [ /usr/appinit/startup-script.sh ]
 users:
   - default
   - name: alexey
