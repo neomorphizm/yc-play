@@ -1,0 +1,46 @@
+{
+  "builders": [
+    {
+    "type": "yandex",
+    "token": "AQAAAAAoPYj6AATuwauI4WxZmEGymXHV2IzLer4",
+    "folder_id": "b1go7fo2r9t7792lbgnn",
+    "zone": "ru-central1-a",
+    
+    "image_name": "reddit-base-{{timestamp}}",
+    "image_family": "reddit-base",
+    "image_description": "lab07",
+    
+    "source_image_family": "ubuntu-1604-lts",
+    
+    "subnet_id": "e9b5qbeucv4frf7tqui1",
+    "use_ipv4_nat": "true",
+    "instance_cores": "2",
+    "instance_mem_gb": "2",
+    
+    "ssh_username": "ubuntu"
+    }
+  ],
+  "provisioners": [
+    {
+    "type": "shell",
+    "inline": [
+      "echo set debconf to Noninteractive", 
+      "echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections" ]
+    },
+    {
+    "type": "shell",
+    "script": "../../install_proxychains.sh",
+    "execute_command": "sudo {{.Path}}"
+    },    
+    {
+    "type": "shell",
+    "script": "../scripts/install_ruby.sh",
+    "execute_command": "sudo {{.Path}}"
+    },
+    {
+    "type": "shell",
+    "script": "../scripts/install_mongod.sh",
+    "execute_command": "sudo {{.Path}}"
+    }
+  ]
+}
